@@ -16,6 +16,7 @@ import { router as reviewRouter } from './routes/reviewRoutes.js';
 import { router as viewRouter } from './routes/viewRoutes.js';
 import { router as bookingRouter } from './routes/bookingRoutes.js';
 import cookieParser from 'cookie-parser';
+import compression from 'compression';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -105,6 +106,8 @@ app.use(
     ],
   })
 );
+
+app.use(compression());
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString(); //custom property, not the same as params.
