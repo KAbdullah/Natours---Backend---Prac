@@ -4,9 +4,7 @@ import { showAlert } from './alerts.js';
 export const bookTour = async (tourId) => {
   try {
     // 1) Get the checkout session from the API
-    const session = await axios(
-      `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`
-    );
+    const session = await axios(`/api/v1/bookings/checkout-session/${tourId}`);
 
     // I put this here, because for some reason, the pug script loads after we call this, so now I await it.
     // Don't use the new keyword because we aren't trying to open up a new session each time.
