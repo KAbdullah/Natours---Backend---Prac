@@ -1,0 +1,8 @@
+# Handle all text files automatically
+* text=auto
+
+# Force Unix line endings for shell scripts
+*.sh text eol=lf
+
+# Force Windows line endings for batch files
+*.bat text eol=crlf
