@@ -23,6 +23,10 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
+export const app = express();
+
+app.enable('trust proxy');
+
 //Access-Control-Allow-Origin: allows other sites to consume our api
 app.use(cors());
 // If we wanted a specific site, then we would do:
@@ -34,10 +38,6 @@ app.use(cors());
 // we need to respond to the options requests sent by the api client
 // we do so here:
 app.options('*', cors());
-
-export const app = express();
-
-app.enable('trust proxy');
 
 app.set('view engine', 'pug');
 app.set('views', './views');
