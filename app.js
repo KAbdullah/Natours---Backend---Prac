@@ -17,6 +17,7 @@ import { router as viewRouter } from './routes/viewRoutes.js';
 import { router as bookingRouter } from './routes/bookingRoutes.js';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
+import cors from 'cors';
 
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -35,6 +36,19 @@ app.use(express.static(path.join(__dirname, 'public'))); //works for static file
 app.use(cookieParser());
 
 // 1) GLOBAL middleware
+
+//Access-Control-Allow-Origin: allows other sites to consume our api
+app.use(cors());
+// If we wanted a specific site, then we would do:
+// app.use(cors({
+//   origin: 'the website we want to consume our api'
+// }))
+
+//allow a complex request like put,delete or update to go through,
+// we need to respond to the options requests sent by the api client
+// we do so here:
+app.options('*', cors());
+
 //Set Security HTTP headers
 // Further HELMET configuration for Security Policy (CSP)
 const scriptSrcUrls = [
