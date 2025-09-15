@@ -24,6 +24,8 @@ import { dirname } from 'path';
 
 export const app = express();
 
+app.enable('trust proxy');
+
 app.set('view engine', 'pug');
 app.set('views', './views');
 
